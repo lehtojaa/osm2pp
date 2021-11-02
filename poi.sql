@@ -138,17 +138,13 @@ CREATE TABLE osm_latest
 AS
 SELECT  
 	osm_id AS orig_id, 
-	osm_subtype AS palvelutyyppi, 
+	osm_subtype AS palvelukohdetyyppi, 
 	name AS kohteen_nimi, 
-
 	opening_hours AS aukioloajat,
 	address AS katuosoite,
-
 	website AS verkkosivu,
-
 	phone AS puhelinnumero,
-
-	email AS email,
+	email AS sahkoposti,
 	operator AS palveluntarjoaja,
 	'OpenStreetMap' AS datalahde,
 	geom
@@ -177,7 +173,7 @@ SELECT
 		vpoi_sub.osm_subtype = 'church' OR
 		vpoi_sub.osm_subtype = 'police' OR
 		vpoi_sub.osm_subtype = 'aerodrome' OR
-		(vpoi_sub.osm_subtype like 'alcohol' and vpoi_sub.name ILIKE '%alko%') OR
+		(vpoi_sub.osm_subtype LIKE 'alcohol' and vpoi_sub.name ILIKE '%alko%') OR
 		vpoi_sub.osm_subtype = 'charging_station' OR 
 		vpoi_sub.osm_subtype = 'vehicle_inspection' OR 
 		vpoi_sub.osm_subtype = 'post_office' OR
@@ -188,7 +184,6 @@ SELECT
 		vpoi_sub.osm_subtype = 'bus_station' OR
 		vpoi_sub.osm_subtype = 'marketplace' OR
 		vpoi_sub.osm_subtype = 'supermarket' OR
-
 		vpoi_sub.osm_subtype = 'convenience' OR 
 		vpoi_sub.osm_subtype = 'place_of_worship' OR
 		vpoi_sub.osm_subtype = 'motor' OR 
@@ -200,6 +195,25 @@ SELECT
 		vpoi_sub.osm_subtype = 'barbershop' OR 
 		vpoi_sub.osm_subtype ILIKE 'cafe%' OR 
 		vpoi_sub.osm_subtype ILIKE 'pub' OR 
-		vpoi_sub.osm_subtype ILIKE 'bar' OR 
-		(vpoi_sub.osm_type = 'shop' AND NOT (vpoi_sub.osm_subtype = 'supermarket' OR vpoi_sub.osm_subtype = 'convenience' ));
+		vpoi_sub.osm_subtype ILIKE 'bar' OR
+		vpoi_sub.osm_subtype = 'kiosk' OR
+		vpoi_sub.osm_subtype = 'clothes' OR 
+		vpoi_sub.osm_subtype = 'furniture' OR
+		vpoi_sub.osm_subtype = 'hardware' OR 
+		vpoi_sub.osm_subtype = 'florist' OR 
+		vpoi_sub.osm_subtype = 'car' OR  
+		vpoi_sub.osm_subtype = 'pet' OR
+		vpoi_sub.osm_subtype = 'laundry' OR 
+		vpoi_sub.osm_subtype = 'second_hand' OR 
+		vpoi_sub.osm_subtype = 'variety_store' OR 
+		vpoi_sub.osm_subtype = 'bicycle' OR 
+		vpoi_sub.osm_subtype = 'electronics' OR 
+		vpoi_sub.osm_subtype = 'cosmetics' OR 
+		vpoi_sub.osm_subtype = 'books' OR
+		vpoi_sub.osm_subtype = 'jewelry' OR 
+		vpoi_sub.osm_subtype = 'sports';
+		
+	
+ 
+
 
